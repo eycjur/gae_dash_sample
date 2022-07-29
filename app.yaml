@@ -1,0 +1,14 @@
+runtime: python39
+
+env: standard
+service: default  # 未指定でdefault, .envで指定したい
+instance_class: F1
+entrypoint: gunicorn -b :8080 app.app:server
+
+
+automatic_scaling:
+  min_idle_instances: automatic
+  max_idle_instances: 1
+  min_pending_latency: 3000ms
+  max_pending_latency: automatic
+  max_instances: 2
